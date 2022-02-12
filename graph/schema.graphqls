@@ -1,0 +1,16 @@
+interface Node {
+  id: ID!
+}
+
+extend type Todo implements Node @key(fields: "id") {
+  id: ID! @external
+}
+
+extend type Document implements Node @key(fields: "id") {
+  id: ID! @external
+}
+
+type Query {
+  node(id: ID!): Node
+  nodes(ids: [ID!]!): [Node]!
+}
